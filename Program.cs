@@ -1,36 +1,36 @@
 ﻿using System;
 
-namespace DiceSimulator
+namespace dice_simulator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the dice throwing simulator!");
-            Console.Write("How many dice rolls would you like to simulate? ");
+            Console.WriteLine("Dice throwing simulator");
+            Console.Write("Number of rolls: ");
 
-            int rolls = int.Parse(Console.ReadLine());
+            int rollCount = int.Parse(Console.ReadLine());
 
-            Dice dice = new Dice();
-            int[] results = dice.RollDice(rolls);
+            Dice cubeGame = new Dice();
+            int[] finalNumbers = cubeGame.TossDice(rollCount);
 
-            Console.WriteLine("\nDICE ROLLING SIMULATION RESULTS");
-            Console.WriteLine("Each \"*\" represents 1% of the total number of rolls.");
-            Console.WriteLine("Total number of rolls = " + rolls + ".\n");
+            Console.WriteLine("Results");
+            Console.WriteLine("* = 1%");
+            Console.WriteLine("Total rolls = " + rollCount);
 
-            for (int i = 2; i <= 12; i++)
+            for (int faceTotal = 2; faceTotal <= 12; faceTotal++)
             {
-                int percent = (results[i] * 100) / rolls;
+                int starAmount = (finalNumbers[faceTotal] * 100) / rollCount;
 
-                Console.Write(i + ": ");
-                for (int j = 0; j < percent; j++)
+                Console.Write(faceTotal + ": ");
+                for (int starCounter = 0; starCounter < starAmount; starCounter++)
                 {
                     Console.Write("*");
                 }
                 Console.WriteLine();
             }
 
-            Console.WriteLine("\nThank you for using the dice throwing simulator. Goodbye!");
+            Console.WriteLine("Done");
         }
     }
 }

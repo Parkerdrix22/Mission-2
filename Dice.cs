@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace DiceSimulator
+namespace dice_simulator
 {
     internal class Dice
     {
-        public int[] RollDice(int rolls)
+        public int[] TossDice(int howManyTimes)
         {
-            int[] results = new int[13];
-            Random rand = new Random();
+            int[] rollTotals = new int[13];
+            Random numberPicker = new Random();
 
-            for (int i = 0; i < rolls; i++)
+            for (int counter = 0; counter < howManyTimes; counter++)
             {
-                int die1 = rand.Next(1, 7);
-                int die2 = rand.Next(1, 7);
+                int firstCube = numberPicker.Next(1, 7);
+                int secondCube = numberPicker.Next(1, 7);
 
-                results[die1 + die2]++;
+                rollTotals[firstCube + secondCube]++;
             }
 
-            return results;
+            return rollTotals;
         }
     }
 }
